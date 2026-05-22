@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Abrir app</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 40px;
+      background: #f5f5f5;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      max-width: 400px;
+      margin: auto;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    }
+
+    button {
+      padding: 14px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background: #1976d2;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #125aa0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>Abrir aplicación</h1>
+    <p>Presiona el botón para abrir la app.</p>
+
+    <button onclick="openApp()">
+      Abrir app
+    </button>
+
+    <p id="message"></p>
+  </div>
+
+  <script>
+    const deepLink = "contenedor://tabInicio";
+
+    function openApp() {
+      document.getElementById("message").innerText = "Intentando abrir la app...";
+
+      window.location.href = deepLink;
+
+      setTimeout(() => {
+        document.getElementById("message").innerText =
+          "Si la app no se abrió, puede que no esté instalada o que el deep link no esté configurado.";
+      }, 2000);
+    }
+
+    window.onload = () => {
+      openApp();
+    };
+  </script>
+
+</body>
+</html>
